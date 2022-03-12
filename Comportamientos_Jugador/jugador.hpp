@@ -9,6 +9,12 @@ class ComportamientoJugador : public Comportamiento{
   public:
     ComportamientoJugador(unsigned int size) : Comportamiento(size){
       // Constructor de la clase
+      fil = col =99;
+      brujula = 0;
+      girar_derecha = false;
+      bien_situado = false;
+      ultimaAccion = actIDLE;
+      
       // Dar el valor inicial a las variables de estado
     }
 
@@ -21,7 +27,10 @@ class ComportamientoJugador : public Comportamiento{
   private:
   
   // Declarar aquí las variables de estado
-
+  int fil, col, brujula;
+  bool girar_derecha, bien_situado;
+  char matrizResultado[100][100];
+  Action ultimaAccion;
 };
 
 #endif
