@@ -55,13 +55,14 @@ Action ComportamientoJugador::think(Sensores sensores) {
 	}
 
 	if (sensores.terreno[0]=='G' and !bien_situado) {
+		brujula = sensores.sentido;
 		fil = sensores.posF;
 		col= sensores.posC;
 		bien_situado = true;
 	}
 
 	if (bien_situado) {
-		mapaResultado[sensores.posF][sensores.posC]=sensores.terreno[0];
+		mapearVision(mapaResultado, sensores);
 	}
 
 	// Decidir la nueva accion
@@ -81,4 +82,22 @@ Action ComportamientoJugador::think(Sensores sensores) {
 
 int ComportamientoJugador::interact(Action accion, int valor){
   return false;
+}
+
+void ComportamientoJugador::mapearVision(vector<vector<unsigned char> >& mapaResultado, Sensores sensores) {
+	int n = 0, aux = 0, x = 0, y = 0;
+
+	for (int i=0; i >= -VISION_DEPTH; i--) {
+		for (int j = i; j <= -i; j++) {
+			x = i;
+			y = j;
+			for (int k = 0; k < brujula; k++) {
+				aux = (-1)*x;
+				x = y;
+				y = aux;
+			}
+			mapaResultado[fil+x][col+y] = sensores.terreno[n];
+			n++;
+		}
+	}	
 }
