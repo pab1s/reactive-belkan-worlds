@@ -6,20 +6,32 @@
 #include "comportamientos/comportamiento.hpp"
 using namespace std;
 
+enum Entorno {frenteIzq, frente, frenteDer, derecha, atrasDer, atras, atrasIzq, izquierda};
+enum Etapa {inicio, muro, objeto, morir, recargar};
+
 class ComportamientoJugador : public Comportamiento {
    public:
     ComportamientoJugador(unsigned int size) : Comportamiento(size) {
         // Constructor de la clase
         fil = col = auxFil = auxCol = 99;
+        contIni = 0;
+        fib_n0 = 0;
+        fib_n1 = 1;
         brujula = norte;
         girar_derecha = false;
         bien_situado = false;
         zapatillas = bikini = false;
+        fronteraEncontrada = posiblePuerta = puerta = false;
         ultimaAccion = actIDLE;
+        etapa = inicio;
         vector<unsigned char> vacio(2 * MAX, '?');
 
         for (unsigned int i = 0; i < 2 * MAX; i++) {
             mapaAux.push_back(vacio);
+        }
+
+        for (int i=frenteIzq; i<=izquierda; i++) {
+            entorno.push_back('?');
         }
         // Dar el valor inicial a las variables de estado
     }
@@ -34,9 +46,12 @@ class ComportamientoJugador : public Comportamiento {
    private:
     // Declarar aquí las variables de estado
     static const int VISION_DEPTH = 3, UNKNOWN = -1, MAX = 100;
-    int fil, col, auxFil, auxCol, brujula;
+    int fil, col, auxFil, auxCol, brujula, fib_n0, fib_n1, contIni;
     bool girar_derecha, bien_situado, zapatillas, bikini;
+    bool fronteraEncontrada, posiblePuerta, puerta;
+    Etapa etapa;
     Action ultimaAccion;
+    vector<unsigned char> entorno;
     vector<vector<unsigned char>> mapaAux;
 
     // Métodos privados
@@ -54,7 +69,11 @@ class ComportamientoJugador : public Comportamiento {
 
     // Devuelve los datos para ir al destino indicado
     // Action sigPaso(int dest);
+    void setEntorno();
+    bool esFrontera(char casilla);
     Action accionSimple(Sensores sensores);
+    Action inicioAgente(Sensores sensores);
+    Action seguirFrontera(Sensores sensores);
 };
 
 #endif

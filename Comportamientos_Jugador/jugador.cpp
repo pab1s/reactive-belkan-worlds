@@ -80,8 +80,10 @@ Action ComportamientoJugador::think(Sensores sensores) {
         incluirMapa();
         mapearVision(mapaResultado, sensores.terreno, brujula, fil, col);
     } else {
-        mapearVision(mapaAux, sensores.terreno, norte, auxFil, auxCol);
+        mapearVision(mapaAux, sensores.terreno, brujula, auxFil, auxCol);
     }
+    setEntorno();
+    etapa = esFrontera(entorno[frente]) ? muro : etapa;
 
     // Decidir la nueva accion
     // 1 - Encontrar objetos
@@ -99,7 +101,11 @@ Action ComportamientoJugador::think(Sensores sensores) {
     */
 
     // Permitimos el avance en terreno de gasto base
-    accion = accionSimple(sensores);
+    if (etapa == inicio) {
+        accion = inicioAgente(sensores);
+    } else if (etapa == muro) {
+        accion = seguirFrontera(sensores);
+    }
 
     // Determinar el efecto de la ultima accion enviada
     ultimaAccion = accion;
@@ -124,6 +130,17 @@ void ComportamientoJugador::mapearVision(vector<vector<unsigned char>>& mapa,
             }
             mapa[f + x][c + y] = vision[n];
             n++;
+        }
+    }
+}
+
+void ComportamientoJugador::incluirMapa() {
+    for (int i = 0; i < 2 * MAX; i++) {
+        for (int j = 0; j < 2 * MAX; j++) {
+            if (mapaAux[i][j] != '?') {
+                mapaResultado[fil + (i - auxFil)][col + (j - auxCol)] =
+                    mapaAux[i][j];
+            }
         }
     }
 }
@@ -182,13 +199,104 @@ Action ComportamientoJugador::accionSimple(Sensores sensores) {
     return paso;
 }
 
-void ComportamientoJugador::incluirMapa() {
-    for (int i = 0; i < 2 * MAX; i++) {
-        for (int j = 0; j < 2 * MAX; j++) {
-            if (mapaAux[i][j] != '?') {
-                mapaResultado[fil + (i - auxFil)][col + (j - auxCol)] =
-                    mapaAux[i][j];
-            }
+Action ComportamientoJugador::inicioAgente(Sensores sensores) {
+    Action ret = actIDLE;
+    int fib_n = fib_n1 + fib_n0;
+
+    if (contIni < fib_n) {
+        contIni++;
+        ret = accionSimple(sensores);
+    } else {
+        contIni = 0;
+        fib_n0 = fib_n1;
+        fib_n1 = fib_n;
+        ret = actTURN_L;
+    }
+    return ret;
+}
+
+// INCOMPLETO: FALTAN CASOS
+Action ComportamientoJugador::seguirFrontera(Sensores sensores) {
+    Action ret = actIDLE;
+
+    if (esFrontera(entorno[frente]) and fronteraEncontrada == false) {
+        fronteraEncontrada = true;
+        ret = actTURN_L;
+    } else if (esFrontera(entorno[derecha]) and !esFrontera(entorno[frente])) {
+        ret = actFORWARD;
+    } else if (esFrontera(entorno[derecha]) and esFrontera(entorno[frente])) {
+        ret = actTURN_L;
+    } else if (!esFrontera(entorno[derecha]) and esFrontera(entorno[atrasDer])) {
+        if (puerta) {
+            puerta = posiblePuerta = false;
+            ret = actFORWARD;
+        }
+        if (posiblePuerta) {
+            puerta = true;
+            ret = actTURN_R;
+        }
+    } else if (!esFrontera(entorno[frente]) and esFrontera(entorno[frenteDer])) {
+        ret = actFORWARD;
+        if (esFrontera(entorno[izquierda])) {
+            posiblePuerta = true;
+        }
+    } 
+    
+     /*else {
+        ret = accionSimple(sensores);
+    }*/
+    cout << "ESTOY EN FRONTERA Y HAGO ESTO: " << ret << endl << "FRENTE: " << entorno[frente] << endl;
+    return ret;
+}
+
+void ComportamientoJugador::setEntorno() {
+    int x1 = -1, y1 = 0, aux1 = 0, x2 = -1, y2 = -1, aux2 = 0;
+
+    for (int i = 0; i < brujula; i++) {
+        aux1 = (-1) * x1;
+        x1 = y1;
+        y1 = aux1;
+
+        aux2 = (-1) * x2;
+        x2 = y2;
+        y2 = aux2;
+    }
+
+    if (bien_situado) {
+        for (int i = 0; i < 4; i++) {
+            entorno[i*2+1] = mapaResultado[fil + x1][col + y1];
+            aux1 = (-1) * x1;
+            x1 = y1;
+            y1 = aux1;
+
+            entorno[i*2] = mapaResultado[fil + x2][col + y2];
+            aux2 = (-1) * x2;
+            x2 = y2;
+            y2 = aux2;
+        }
+    } else {
+        for (int i = 0; i < 4; i++) {
+            entorno[i*2+1] = mapaAux[auxFil + x1][auxCol + y1];
+            aux1 = (-1) * x1;
+            x1 = y1;
+            y1 = aux1;
+
+            entorno[i*2] = mapaAux[auxFil + x2][auxCol + y2];
+            aux2 = (-1) * x2;
+            x2 = y2;
+            y2 = aux2;
         }
     }
+}
+
+bool ComportamientoJugador::esFrontera(char casilla) {
+    bool softFrontier = false, hardFrontier = false;
+
+    if ((casilla == 'A' and !bikini) or
+        (casilla == 'B' and !zapatillas)) {
+        softFrontier = true;
+    } else if (casilla == 'P' or casilla == 'M') {
+        hardFrontier = true;
+    }
+    return softFrontier or hardFrontier;
 }
