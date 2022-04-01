@@ -7,7 +7,7 @@
 using namespace std;
 
 enum Entorno {frenteIzq, frente, frenteDer, derecha, atrasDer, atras, atrasIzq, izquierda};
-enum Etapa {inicio, muro, objeto, morir, recargar};
+enum Etapa {simple, inicio, muro, dejarMuro, objeto, morir, recargar};
 
 class ComportamientoJugador : public Comportamiento {
    public:
@@ -22,6 +22,7 @@ class ComportamientoJugador : public Comportamiento {
         bien_situado = false;
         zapatillas = bikini = false;
         fronteraEncontrada = posiblePuerta = puerta = false;
+        perDescPrev = perDesc = 0;
         ultimaAccion = actIDLE;
         etapa = inicio;
         vector<unsigned char> vacio(2 * MAX, '?');
@@ -46,7 +47,9 @@ class ComportamientoJugador : public Comportamiento {
    private:
     // Declarar aquí las variables de estado
     static const int VISION_DEPTH = 3, UNKNOWN = -1, MAX = 100;
+    const float LEAVE_WALL_PROB = 0.05;
     int fil, col, auxFil, auxCol, brujula, fib_n0, fib_n1, contIni;
+    float perDescPrev, perDesc;
     bool girar_derecha, bien_situado, zapatillas, bikini;
     bool fronteraEncontrada, posiblePuerta, puerta;
     Etapa etapa;
@@ -55,7 +58,7 @@ class ComportamientoJugador : public Comportamiento {
     vector<vector<unsigned char>> mapaAux;
 
     // Métodos privados
-
+    void mensaje(Sensores sensores);
     // Inserta en el mapa indicado todo lo que el jugador ve
     void mapearVision(vector<vector<unsigned char>>& mapa,
                       vector<unsigned char> vision, int orientacion, int f,
@@ -74,6 +77,8 @@ class ComportamientoJugador : public Comportamiento {
     Action accionSimple(Sensores sensores);
     Action inicioAgente(Sensores sensores);
     Action seguirFrontera(Sensores sensores);
+    float randomGenerator();
+    float calcularPerDesc();
 };
 
 #endif

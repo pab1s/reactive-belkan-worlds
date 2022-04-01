@@ -1,41 +1,12 @@
 #include "../Comportamientos_Jugador/jugador.hpp"
 
 #include <iostream>
+#include <random>
 using namespace std;
 
 Action ComportamientoJugador::think(Sensores sensores) {
     Action accion = actIDLE;
-
-    cout << "Posicion: fila " << sensores.posF << " columna " << sensores.posC
-         << " ";
-    switch (sensores.sentido) {
-        case 0:
-            cout << "Norte" << endl;
-            break;
-        case 1:
-            cout << "Este" << endl;
-            break;
-        case 2:
-            cout << "Sur " << endl;
-            break;
-        case 3:
-            cout << "Oeste" << endl;
-            break;
-    }
-    cout << "Terreno: ";
-    for (int i = 0; i < sensores.terreno.size(); i++)
-        cout << sensores.terreno[i];
-    cout << endl;
-
-    cout << "Superficie: ";
-    for (int i = 0; i < sensores.superficie.size(); i++)
-        cout << sensores.superficie[i];
-    cout << endl;
-
-    cout << "Colisión: " << sensores.colision << endl;
-    cout << "Reset: " << sensores.reset << endl;
-    cout << "Vida: " << sensores.vida << endl;
-    cout << endl;
+    mensaje(sensores);
 
     // Establecer la posicion y orientacion anterior
     switch (ultimaAccion) {
@@ -84,6 +55,9 @@ Action ComportamientoJugador::think(Sensores sensores) {
     }
     setEntorno();
     etapa = esFrontera(entorno[frente]) ? muro : etapa;
+    if (randomGenerator() < LEAVE_WALL_PROB and etapa == muro) {
+        etapa = dejarMuro;
+    }
 
     // Decidir la nueva accion
     // 1 - Encontrar objetos
@@ -93,23 +67,62 @@ Action ComportamientoJugador::think(Sensores sensores) {
     if (sensores.terreno[0] == 'K' and !bikini) {
         bikini = true;
     }
-    /*
-    objetivo = encontrarObjetos(sensores.terreno);
-    if (objetivo != ninguno) {
-            accion = sigPaso(objetivo);
-    }
-    */
 
-    // Permitimos el avance en terreno de gasto base
-    if (etapa == inicio) {
-        accion = inicioAgente(sensores);
-    } else if (etapa == muro) {
-        accion = seguirFrontera(sensores);
+    // 2 - Elegimos la accion
+    switch (etapa) {
+        case inicio:
+            accion = inicioAgente(sensores);
+            break;
+        case muro:
+            accion = seguirFrontera(sensores);
+            break;
+        case dejarMuro:
+            fronteraEncontrada = false;
+            accion = actTURN_L;
+            etapa = simple;
+            break;
+        case simple:
+            accion = accionSimple(sensores);
+            break;
     }
 
     // Determinar el efecto de la ultima accion enviada
     ultimaAccion = accion;
     return accion;
+}
+
+// Declaracion metodos
+void ComportamientoJugador::mensaje(Sensores sensores) {
+    cout << "Posicion: fila " << sensores.posF << " columna " << sensores.posC
+         << " ";
+    switch (sensores.sentido) {
+        case 0:
+            cout << "Norte" << endl;
+            break;
+        case 1:
+            cout << "Este" << endl;
+            break;
+        case 2:
+            cout << "Sur " << endl;
+            break;
+        case 3:
+            cout << "Oeste" << endl;
+            break;
+    }
+    cout << "Terreno: ";
+    for (int i = 0; i < sensores.terreno.size(); i++)
+        cout << sensores.terreno[i];
+    cout << endl;
+
+    cout << "Superficie: ";
+    for (int i = 0; i < sensores.superficie.size(); i++)
+        cout << sensores.superficie[i];
+    cout << endl;
+
+    cout << "Colisión: " << sensores.colision << endl;
+    cout << "Reset: " << sensores.reset << endl;
+    cout << "Vida: " << sensores.vida << endl;
+    cout << endl;
 }
 
 int ComportamientoJugador::interact(Action accion, int valor) { return false; }
@@ -224,28 +237,35 @@ Action ComportamientoJugador::seguirFrontera(Sensores sensores) {
         ret = actTURN_L;
     } else if (esFrontera(entorno[derecha]) and !esFrontera(entorno[frente])) {
         ret = actFORWARD;
-    } else if (esFrontera(entorno[derecha]) and esFrontera(entorno[frente])) {
-        ret = actTURN_L;
-    } else if (!esFrontera(entorno[derecha]) and esFrontera(entorno[atrasDer])) {
-        if (puerta) {
-            puerta = posiblePuerta = false;
-            ret = actFORWARD;
-        }
-        if (posiblePuerta) {
-            puerta = true;
-            ret = actTURN_R;
-        }
-    } else if (!esFrontera(entorno[frente]) and esFrontera(entorno[frenteDer])) {
-        ret = actFORWARD;
         if (esFrontera(entorno[izquierda])) {
             posiblePuerta = true;
         }
-    } 
-    
-     /*else {
-        ret = accionSimple(sensores);
-    }*/
-    cout << "ESTOY EN FRONTERA Y HAGO ESTO: " << ret << endl << "FRENTE: " << entorno[frente] << endl;
+    } else if (esFrontera(entorno[derecha]) and esFrontera(entorno[frente])) {
+        ret = actTURN_L;
+    } else if (!esFrontera(entorno[derecha]) and
+               esFrontera(entorno[atrasDer])) {
+        if (puerta) {
+            puerta = posiblePuerta = false;
+            ret = actFORWARD;
+        } else if (posiblePuerta) {
+            puerta = true;
+            ret = actTURN_R;
+        } else {
+            ret = actTURN_R;
+        }
+    } else if (!esFrontera(entorno[frente]) and
+               esFrontera(entorno[frenteDer])) {
+        ret = actFORWARD;
+    }
+
+    /*else {
+       ret = accionSimple(sensores);
+   }*/
+    cout << "ESTOY EN FRONTERA Y HAGO ESTO: " << ret << endl
+         << "FRENTE: " << entorno[frente] << endl
+         << "DER: " << entorno[derecha] << endl
+         << "ATRASDER: " << entorno[atrasDer] << endl
+         << "FRENTEDER: " << entorno[frenteDer] << endl;
     return ret;
 }
 
@@ -264,24 +284,24 @@ void ComportamientoJugador::setEntorno() {
 
     if (bien_situado) {
         for (int i = 0; i < 4; i++) {
-            entorno[i*2+1] = mapaResultado[fil + x1][col + y1];
+            entorno[i * 2 + 1] = mapaResultado[fil + x1][col + y1];
             aux1 = (-1) * x1;
             x1 = y1;
             y1 = aux1;
 
-            entorno[i*2] = mapaResultado[fil + x2][col + y2];
+            entorno[i * 2] = mapaResultado[fil + x2][col + y2];
             aux2 = (-1) * x2;
             x2 = y2;
             y2 = aux2;
         }
     } else {
         for (int i = 0; i < 4; i++) {
-            entorno[i*2+1] = mapaAux[auxFil + x1][auxCol + y1];
+            entorno[i * 2 + 1] = mapaAux[auxFil + x1][auxCol + y1];
             aux1 = (-1) * x1;
             x1 = y1;
             y1 = aux1;
 
-            entorno[i*2] = mapaAux[auxFil + x2][auxCol + y2];
+            entorno[i * 2] = mapaAux[auxFil + x2][auxCol + y2];
             aux2 = (-1) * x2;
             x2 = y2;
             y2 = aux2;
@@ -292,11 +312,43 @@ void ComportamientoJugador::setEntorno() {
 bool ComportamientoJugador::esFrontera(char casilla) {
     bool softFrontier = false, hardFrontier = false;
 
-    if ((casilla == 'A' and !bikini) or
-        (casilla == 'B' and !zapatillas)) {
+    if ((casilla == 'A' and !bikini) or (casilla == 'B' and !zapatillas)) {
         softFrontier = true;
     } else if (casilla == 'P' or casilla == 'M') {
         hardFrontier = true;
     }
     return softFrontier or hardFrontier;
+}
+
+float ComportamientoJugador::randomGenerator() {
+    float random_num = 0;
+    random_device rd; 
+    mt19937 gen(rd()); 
+    uniform_real_distribution<> dis(0,1.0);
+    random_num = dis(gen);
+    return random_num;
+}
+
+float ComportamientoJugador::calcularPerDesc() {
+    float porcentaje = 0, contador = 0;
+
+    if (bien_situado) {
+        for (int i = 0; i < MAX; i++) {
+            for (int j = 0; j < MAX; j++) {
+                if (mapaResultado[i][j] != '?') {
+                    contador++;
+                }
+            }
+        }
+    } else {
+        for (int i = 0; i < 2*MAX; i++) {
+            for (int j = 0; j < 2*MAX; j++) {
+                if (mapaAux[i][j] != '?') {
+                    contador++;
+                }
+            }
+        }
+    }
+    porcentaje = contador / (MAX*MAX);
+    return porcentaje;
 }
