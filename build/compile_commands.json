@@ -1,0 +1,377 @@
+[
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/cono3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cono3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cono3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/cono3dwire.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cono3dwire.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cono3dwire.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/cubo3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cubo3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/cubo3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/dodecaedro3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/dodecaedro3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/dodecaedro3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/esfera3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/esfera3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/esfera3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/file_ply_stl.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/file_ply_stl.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/file_ply_stl.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/icosaedro3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/icosaedro3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/icosaedro3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/jpeg_reader/jpg_imagen.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_imagen.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_imagen.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/jpeg_reader/jpg_memsrc.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_memsrc.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_memsrc.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/jpeg_reader/jpg_readwrite.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_readwrite.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/jpeg_reader/jpg_readwrite.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/luz.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/luz.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/luz.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/objeto3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/objeto3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/objeto3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/objrevolucion3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/objrevolucion3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/objrevolucion3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/octaedro3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/octaedro3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/octaedro3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/tetraedro3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/tetraedro3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/tetraedro3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/obj3DLib.dir/src/obj3dlib/toro3d.cc.o -c /home/pablo/Documentos/GitHub/practica1/src/obj3dlib/toro3d.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/obj3dlib/toro3d.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/algebra3.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/algebra3.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/algebra3.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/arcball.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/arcball.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/arcball.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_add_controls.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_add_controls.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_add_controls.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_bitmap_img_data.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_bitmap_img_data.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_bitmap_img_data.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_bitmaps.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_bitmaps.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_bitmaps.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_button.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_button.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_button.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_checkbox.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_checkbox.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_checkbox.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_column.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_column.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_column.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_commandline.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_commandline.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_commandline.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_control.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_control.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_control.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_edittext.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_edittext.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_edittext.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_filebrowser.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_filebrowser.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_filebrowser.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_list.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_list.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_list.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_listbox.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_listbox.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_listbox.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_mouse_iaction.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_mouse_iaction.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_mouse_iaction.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_node.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_node.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_node.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_panel.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_panel.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_panel.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_radio.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_radio.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_radio.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_rollout.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_rollout.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_rollout.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_rotation.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_rotation.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_rotation.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_scrollbar.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_scrollbar.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_scrollbar.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_separator.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_separator.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_separator.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_spinner.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_spinner.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_spinner.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_statictext.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_statictext.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_statictext.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_string.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_string.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_string.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_textbox.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_textbox.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_textbox.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_translation.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_translation.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_translation.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_tree.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_tree.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_tree.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_treepanel.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_treepanel.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_treepanel.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/glui_window.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/glui_window.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/glui_window.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/quaternion.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/quaternion.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/quaternion.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/GLUILib.dir/src/glui/viewmodel.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/glui/viewmodel.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/glui/viewmodel.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/aldeano.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/aldeano.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/aldeano.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/brazo.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/brazo.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/brazo.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/cabeza.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/cabeza.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/cabeza.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/cintura.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/cintura.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/cintura.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/pierna.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/pierna.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/pierna.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/aldeano/torso.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/torso.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/aldeano/torso.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/arbol/arbol.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/arbol/arbol.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/arbol/arbol.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/item/item.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/item/item.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/item/item.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/jugador/jugador3d.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/jugador/jugador3d.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/jugador/jugador3d.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/jugador/quesito.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/jugador/quesito.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/jugador/quesito.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/perro/cabeza.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/perro/cabeza.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/perro/cabeza.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/perro/lomo.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/perro/lomo.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/perro/lomo.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/perro/perro.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/perro/perro.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/perro/perro.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/modelosBelkanLib.dir/src/modelos/retrato.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/modelos/retrato.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/modelos/retrato.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/aldeano.cpp.o -c /home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/aldeano.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/aldeano.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/jugador.cpp.o -c /home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/jugador.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/jugador.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/perro.cpp.o -c /home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/perro.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/Comportamientos_Jugador/perro.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/comportamientosLib.dir/src/comportamientos/comportamiento.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/comportamientos/comportamiento.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/comportamientos/comportamiento.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/entidad.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/entidad.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/entidad.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/mapa.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/mapa.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/mapa.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/monitor.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/monitor.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/monitor.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/motor_grafico.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/motor_grafico.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/motor_grafico.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/motor_juego.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/motor_juego.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/motor_juego.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/motorLib.dir/src/motorlib/util.cpp.o -c /home/pablo/Documentos/GitHub/practica1/src/motorlib/util.cpp",
+  "file": "/home/pablo/Documentos/GitHub/practica1/src/motorlib/util.cpp"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/practica1.dir/bin_src/juego.cc.o -c /home/pablo/Documentos/GitHub/practica1/bin_src/juego.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/bin_src/juego.cc"
+},
+{
+  "directory": "/home/pablo/Documentos/GitHub/practica1/build",
+  "command": "/usr/bin/c++  -I/home/pablo/Documentos/GitHub/practica1/include  -fopenmp -pthread -std=c++11 -O3 -lglut -g -o CMakeFiles/practica1SG.dir/bin_src/juegoSG.cc.o -c /home/pablo/Documentos/GitHub/practica1/bin_src/juegoSG.cc",
+  "file": "/home/pablo/Documentos/GitHub/practica1/bin_src/juegoSG.cc"
+}
+]

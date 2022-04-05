@@ -1,0 +1,114 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Motor_Grafico_Belkan",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GLUILib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GLUILib-Debug-adb43a5055844d547e54.json",
+					"name" : "GLUILib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "comportamientosLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-comportamientosLib-Debug-66c793be4159ef918753.json",
+					"name" : "comportamientosLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "modelosBelkanLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-modelosBelkanLib-Debug-ea86c68b36325e878a91.json",
+					"name" : "modelosBelkanLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motorLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motorLib-Debug-8de734b7d056c677a3af.json",
+					"name" : "motorLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "obj3DLib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-obj3DLib-Debug-7895da000b0a348c262d.json",
+					"name" : "obj3DLib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "practica1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-practica1-Debug-b3b987d62d3b22f337f8.json",
+					"name" : "practica1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "practica1SG::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-practica1SG-Debug-10e2d1719e614e8e4160.json",
+					"name" : "practica1SG",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/pablo/Documentos/GitHub/practica1/build",
+		"source" : "/home/pablo/Documentos/GitHub/practica1"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
