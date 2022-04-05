@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/x86_64-redhat-linux-gcc-11"
 		},
 		{
@@ -1214,18 +1214,6 @@
 			"value" : "[/usr/bin/pkg-config][v1.8.0()]"
 		},
 		{
-			"name" : "GLUILib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;/usr/lib64/libGL.so;general;/usr/lib64/libGLU.so;"
-		},
-		{
 			"name" : "GLUT_CFLAGS",
 			"properties" : 
 			[
@@ -2112,54 +2100,6 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "1"
-		},
-		{
-			"name" : "comportamientosLib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;-lpthread;"
-		},
-		{
-			"name" : "modelosBelkanLib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;obj3DLib;general;/usr/lib64/libGL.so;general;/usr/lib64/libGLU.so;general;-lpthread;"
-		},
-		{
-			"name" : "motorLib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;obj3DLib;general;GLUILib;general;comportamientosLib;general;/usr/lib64/libGL.so;general;/usr/lib64/libGLU.so;general;-lpthread;"
-		},
-		{
-			"name" : "obj3DLib_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;/usr/lib64/libGL.so;general;/usr/lib64/libGLU.so;general;/usr/lib64/libjpeg.so;general;-lpthread;"
 		},
 		{
 			"name" : "pkgcfg_lib_GLUT_glut",

@@ -36,12 +36,6 @@
 				"parent" : 0
 			},
 			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 82,
-				"parent" : 0
-			},
-			{
 				"command" : 2,
 				"file" : 0,
 				"line" : 60,
@@ -61,7 +55,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 3,
 					"path" : "/home/pablo/Documentos/GitHub/practica1/include"
 				}
 			],
@@ -105,7 +99,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-rdynamic",
+				"fragment" : "",
 				"role" : "flags"
 			},
 			{
@@ -129,12 +123,10 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
 				"fragment" : "lib/libGLUILib.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 3,
 				"fragment" : "lib/libcomportamientosLib.a",
 				"role" : "libraries"
 			},
@@ -144,7 +136,7 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-ljpeg",
+				"fragment" : "/usr/lib64/libjpeg.so",
 				"role" : "libraries"
 			},
 			{
@@ -153,11 +145,15 @@
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lGL",
+				"fragment" : "/usr/lib64/libOpenGL.so",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "-lGLU",
+				"fragment" : "/usr/lib64/libGLX.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib64/libGLU.so",
 				"role" : "libraries"
 			}
 		],
