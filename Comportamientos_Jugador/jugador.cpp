@@ -3,10 +3,12 @@
 #include <cmath>
 #include <iostream>
 #include <random>
+#include <algorithm>
 using namespace std;
 
 Action ComportamientoJugador::think(Sensores sensores) {
     Action accion = actIDLE;
+    accionDecidida = false;
     mensaje(sensores);
     if (sensores.reset) reset();
     ++pasos;
@@ -79,42 +81,46 @@ Action ComportamientoJugador::think(Sensores sensores) {
         bikini = true;
     }
 
-    if (pasos >= 250) {
+    if (pasos >= 750) {
         if (bien_situado) {
             perDescPrev = perDesc;
         } else {
             perDescPrev = 0;
         }
-        if ((perDesc - perDescPrev) < 0.02) {
+        perDesc = calcularPerDesc();
+        if ((perDesc - perDescPrev) < DISCOVER_PERC) {
             etapa = morir;
         }
         pasos = 0;
     }
 
-    if (sensores.terreno[0] == 'X' and
-        ((float(sensores.bateria) / float(sensores.vida)) < CHARGE_PROP)) {
-        etapa = recargar;
-    } else if (esFrontera(entorno[frente]) and esFrontera(entorno[derecha]) and
-               esFrontera(entorno[izquierda]) and esFrontera(entorno[atras])) {
-        if (entorno[frente] != 'M') {
-            accion = actFORWARD;
+    if (etapa != morir) {
+        if (sensores.terreno[0] == 'X' and
+            ((float(sensores.bateria) / float(sensores.vida)) < CHARGE_PROP)) {
+            etapa = recargar;
+        } else if (esFrontera(entorno[frente]) and esFrontera(entorno[derecha]) and
+                esFrontera(entorno[izquierda]) and esFrontera(entorno[atras])) {
+            if (entorno[frente] != 'M') {
+                accion = actFORWARD;
+            } else {
+                accion = actTURN_L;
+            }
+            etapa = simple;
+            accionDecidida = true;
+        } else if (evitarAldeano(sensores.superficie[2])) {
+            etapa = esquivar;
+            caminoASeguir = false;
+            ruta.clear();
+        } else if (caminoASeguir and entorno[frente] != 'M') {
+            etapa = especial;
+        } else if (etapa != especial) {
+            etapa = esFrontera(entorno[frente]) ? muro : etapa;
         } else {
-            accion = actTURN_L;
+            etapa = simple;
         }
-        accionDecidida = true;
-    } else if (evitarAldeano(sensores.superficie[2])) {
-        etapa = esquivar;
-        caminoASeguir = false;
-        ruta.clear();
-    } else if (caminoASeguir and entorno[frente] != 'M') {
-        etapa = especial;
-    } else if (etapa != morir and etapa != especial) {
-        etapa = esFrontera(entorno[frente]) ? muro : etapa;
-    } else {
-        etapa = simple;
     }
 
-    if (randomGenerator() < LEAVE_WALL_PROB and pasosFrontera > 25 and
+    if (randomGenerator() < LEAVE_WALL_PROB and pasosFrontera > MIN_STEPS_LEAVE_WALL and
         etapa == muro) {
         etapa = dejarMuro;
     }
@@ -153,16 +159,24 @@ Action ComportamientoJugador::think(Sensores sensores) {
                 etapa = simple;
                 break;
             case especial:
+                pasosFrontera = 0;
                 fronteraEncontrada = false;
+                puerta = posiblePuerta = false;
                 accion = sigueCamino();
                 break;
             case recargar:
                 accion = actIDLE;
+                break;
         }
     }
 
-    // 3 - Determinar el efecto de la ultima accion enviada
-    accionDecidida = false;
+    /* 3 - Si detecta que en el siguiente ciclo muere, infiere las casillas 
+    no descubiertas. */
+    if (voyAMorir(accion, sensores)) {
+        rellenar();
+    }
+
+    // 4 - Determinar el efecto de la ultima accion enviada 
     ultimaAccion = accion;
     return accion;
 }
@@ -332,15 +346,18 @@ Action ComportamientoJugador::accionSimple(Sensores sensores) {
 Action ComportamientoJugador::inicioAgente(Sensores sensores) {
     Action ret = actIDLE;
     int fib_n = fib_n1 + fib_n0;
-
-    if (contIni < fib_n) {
-        contIni++;
-        ret = accionSimple(sensores);
+    if (!terrenoIdeal) {
+        ret = actFORWARD;
     } else {
-        contIni = 0;
-        fib_n0 = fib_n1;
-        fib_n1 = fib_n;
-        ret = actTURN_L;
+        if (contIni < fib_n) {
+            contIni++;
+            ret = accionSimple(sensores);
+        } else {
+            contIni = 0;
+            fib_n0 = fib_n1;
+            fib_n1 = fib_n;
+            ret = actTURN_L;
+        }
     }
     return ret;
 }
@@ -354,7 +371,6 @@ Action ComportamientoJugador::seguirFrontera(Sensores sensores) {
     } else if (esFrontera(entorno[derecha]) and !esFrontera(entorno[frente])) {
         ret = actFORWARD;
         if (esFrontera(entorno[izquierda])) {
-            cout << "PUEDE SER UNA PUERTA " << endl;
             posiblePuerta = true;
         }
     } else if (esFrontera(entorno[derecha]) and esFrontera(entorno[frente])) {
@@ -362,7 +378,6 @@ Action ComportamientoJugador::seguirFrontera(Sensores sensores) {
     } else if (!esFrontera(entorno[derecha]) and
                esFrontera(entorno[atrasDer])) {
         if (puerta) {
-            cout << "ES UNA PUERTA " << endl;
             puerta = posiblePuerta = false;
             ret = actFORWARD;
         } else if (posiblePuerta) {
@@ -383,12 +398,6 @@ Action ComportamientoJugador::seguirFrontera(Sensores sensores) {
             controladorPuerta = 0;
         }
     }
-
-    cout << "ESTOY EN FRONTERA Y HAGO ESTO: " << ret << endl
-         << "FRENTE: " << entorno[frente] << endl
-         << "DER: " << entorno[derecha] << endl
-         << "ATRASDER: " << entorno[atrasDer] << endl
-         << "FRENTEDER: " << entorno[frenteDer] << endl;
     return ret;
 }
 
@@ -457,8 +466,8 @@ float ComportamientoJugador::calcularPerDesc() {
     float porcentaje = 0, contador = 0;
 
     if (bien_situado) {
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mapaResultado.size(); i++) {
+            for (int j = 0; j < mapaResultado.size(); j++) {
                 if (mapaResultado[i][j] != '?') {
                     contador++;
                 }
@@ -473,7 +482,7 @@ float ComportamientoJugador::calcularPerDesc() {
             }
         }
     }
-    porcentaje = contador / (MAX * MAX);
+    porcentaje = contador / (mapaResultado.size() * mapaResultado.size());
     return porcentaje;
 }
 
@@ -519,4 +528,125 @@ void ComportamientoJugador::evaluarTerreno(char casilla) {
 
 bool ComportamientoJugador::evitarAldeano(char superficie) {
     return superficie == 'a';
+}
+
+void ComportamientoJugador::rellenar() {
+    int size = mapaResultado.size(), maxElementIndex = 0;
+    vector <unsigned char> casillas =   {'P', 'T', 'S', 'G', 'X', 'D', 'K', 'B', 'A', 'M'};
+    vector <int> num_casillas =         {0,   0,   0,   0,   0,   0,   0,   0,   0,   0};
+
+    for (int n = 0; n < size/2; n++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i == 0+n || j == 0+n || i == size -1-n || j == size -1-n) {
+                    for (int k = 0; k < casillas.size(); k++) {
+                        if (mapaResultado[i][j] == casillas[k]) {
+                            num_casillas[k]++;
+                        }
+                    }
+                }
+            }
+        }
+
+        maxElementIndex = distance(num_casillas.begin(), max_element(num_casillas.begin(), num_casillas.end()));
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (mapaResultado[i][j] == '?' and (i == 0+n || j == 0+n || i == size -1-n || j == size -1-n)) {
+                    if (num_casillas[maxElementIndex] == 0) {
+                        mapaResultado[i][j] = 'T';
+                    } else {
+                    mapaResultado[i][j] = casillas[maxElementIndex];
+                    }
+                }
+            }
+        }
+
+        fill(num_casillas.begin(), num_casillas.end(), 0);
+    }
+}
+
+void ComportamientoJugador::rellenarV2() {
+    int size = mapaResultado.size();
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (i == 0) {
+                if (mapaResultado[i][j] == '?') {
+                    mapaResultado[i][j] = 'P';
+                }
+            } else if (mapaResultado[i-1][j] != '?' and mapaResultado[i][j] == '?') {
+                mapaResultado[i][j] = mapaResultado[i-1][j];
+            }
+        }
+    }
+}
+
+bool ComportamientoJugador::voyAMorir(Action accion, Sensores sensores) {
+  int nextBateria = 1;
+  bool fin = false;
+  unsigned char celda = '?';
+
+  if (accion == actFORWARD) {
+      celda = sensores.terreno[2];
+  } else {
+        celda = sensores.terreno[0];
+  }
+
+  switch (accion) {
+    case actIDLE:
+        nextBateria = 0;
+        break;
+    case actFORWARD:
+        switch (celda) {
+            case 'A':
+            if (bikini) // Bikini
+                nextBateria = 10;
+            else
+                nextBateria = 200;
+            break;
+        case 'B':
+            if (zapatillas) // Zapatillas
+                nextBateria = 15;
+            else
+                nextBateria = 100;
+            break;
+        case 'T':
+            nextBateria = 2;
+            break;
+        default:
+            nextBateria = 1;
+            break;
+        } // Fin switch celda
+        break;
+    case actTURN_L:
+    case actTURN_R:
+        switch (celda) {
+            case 'A':
+                if (bikini) // Bikini
+                    nextBateria = 5;
+                else
+                    nextBateria = 500;
+                break;
+            case 'B':
+                if (zapatillas) // Zapatillas
+                    nextBateria = 1;
+                else
+                    nextBateria = 3;
+            break;
+            case 'T':
+                nextBateria = 2;
+                break;
+            default:
+                nextBateria = 1;
+                break; 
+        } // Fin switch celda
+        break;
+    }
+
+    if (sensores.bateria - nextBateria <= 0 or sensores.vida - 1 <= 0) {
+        fin = true;
+    }
+
+    return fin;
 }

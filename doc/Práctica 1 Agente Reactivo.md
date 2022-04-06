@@ -1,152 +1,77 @@
-/**
- * @file jugador.hpp
- * @author Pablo Olivares Martínez
- * @brief Cabecera de la clase ComportamientoJugador. Ésta establece el
- * comportamiento de un agente reactivo en el mapa de los "Mundos de Belkan".
- * @version 0.1
- * @date 2022-04-05
- */
-#ifndef COMPORTAMIENTOJUGADOR_H
-#define COMPORTAMIENTOJUGADOR_H
+# Práctica 1: Agente Reactivo
 
-#include <list>
-#include <vector>
+## Mundos de Belkan
 
-#include "comportamientos/comportamiento.hpp"
-using namespace std;
+### Pablo Olivares Martínez
 
+
+
+### 1. Funcionamiento del agente
+
+La práctica nos pedía la realización de un agente reactivo. Para ello, he declarado variables de estado y métodos para conseguir dicho objetivo. La idea principal sobre el funcionamiento de mi agente consistía en dividir las acciones en etapas e ir escogiendo la más útil en cada momento para realizar una acción. Al comenzar, `etapa = inicio`, realizo una espiral para encontrar algún muro. Los cálculos de dicha espiral se realizaban basándome en la *sucesión de Fibonacci*. Cuando éste encuentra un muro o *frontera* (casilla que no puede atravesar, ya sea por agentes externos, por ser muros, precipicios o casillas con coste adicional sin objeto), `etapa = muro`, el agente comenzará a seguir dicha frontera durante al menos 25 pasos y hasta que el generador de números aleatorios distribuidos uniformemente en [0,1] genere un número con una probabilidad inferior a `LEAVE_WALL_PROB`. En ese caso, el agente dejará la frontera, `etapa = dejarMuro`, girando a la izquierda y comenzando a comportarse de manera simple, es decir, `etapa = simple`. El comportamiento simple no es más que el realizado durante el tutorial de la práctica. En caso de ver un objeto o una casilla especial que necesite en su campo de visión, `etapa = especial` , éste se dirigirá a él si nada se interpone en su camino. Si dicha casilla es de recarga, en caso de cumplir el criterio de que su cociente entre bateria y vida es menor que `CHARGE_PROP`, comenzará a recargar su batería en la `etapa = bateria`. Cuando esté cargada con el porcentaje exigido, se irá. Si un aldeano se interpone en su camino, el agente lo esquivará en `etapa = esquivar`. Finalmente, si el agente no descubre más del 2% del mapa respecto a la anterior comprobación (en mi caso 750 pasos, para evitar así que se quede en zonas sin salidas), `etapa = morir`, este se suicidará cuando encuentre un precipicio para reaparecer en otro punto volviendo a empezar con `etapa = inicio`.
+
+Además, el agente también considera aspectos como aparecer en zonas desfavorables. Al finalizar la ejecución, el agente inferirá sobre las casillas no descubiertas a partir de las conocidas, cual es la más probable y así pintar en `mapaResultado`.
+
+
+
+### 2. Variables de estado
+
+Primero he declarado dos enumerados para facilitar la comprensión del programa:
+
+```c++
 /// @brief Enumerado con las distintas direcciones del entorno del agente
-enum Entorno {
-    frenteIzq,
-    frente,
-    frenteDer,
-    derecha,
-    atrasDer,
-    atras,
-    atrasIzq,
-    izquierda
-};
-/// @brief Enumerado con los diferentes estados del agente
-enum Etapa {
-    simple,
-    inicio,
-    muro,
-    dejarMuro,
-    esquivar,
-    especial,
-    morir,
-    recargar
-};
+enum Entorno { frenteIzq, frente, frenteDer, derecha, atrasDer, atras, atrasIzq, izquierda};
+/// @brief Enumerado con las diferentes etapas del agente
+enum Etapa {simple, inicio, muro, dejarMuro, esquivar, especial, morir, recargar};
+```
 
-/**
- * @class ComportamientoJugador
- * @brief Implementación del comportamiento del agente.
- */
-class ComportamientoJugador : public Comportamiento {
-   public:
-    /**
-     * @brief Constructor de la clase ComportamientoJugador.
-     * @param size Se trata del tamaño del mapa.
-     */
-    ComportamientoJugador(unsigned int size) : Comportamiento(size) {
-        fil = col = auxFil = auxCol = 99;
-        pasos = 0, pasosFrontera = 0;
-        contIni = 0;
-        fib_n0 = 0;
-        fib_n1 = 1;
-        brujula = norte;
-        girar_derecha = false;
-        accionDecidida = false;
-        bien_situado = false;
-        terrenoIdeal = false;
-        caminoASeguir = false;
-        zapatillas = bikini = false;
-        controladorPuerta = 0;
-        fronteraEncontrada = posiblePuerta = puerta = false;
-        perDescPrev = perDesc = 0;
-        ultimaAccion = actIDLE;
-        etapa = inicio;
-        vector<unsigned char> vacio(2 * MAX, '?');
+A continuación, haré una breve descripción de la utilidad de cada variable de estado declarada en mi programa:
 
-        for (unsigned int i = 0; i < 2 * MAX; i++) {
-            mapaAux.push_back(vacio);
-        }
+```c++
+// Enteros constantes del programa 
+static const int VISION_DEPTH = 3, UNKNOWN = -1, MAX = 100, MIN_STEPS_LEAVE_WALL = 25;
+// Constates con la probabilidad de dejarMuro, la proporción de carga deseada y el porcentaje descubierto
+const float LEAVE_WALL_PROB = 0.05, CHARGE_PROP = 5.0 / 3.0, DISCOVER_PERC = 0.03;
+// Cuenta los pasos relativos para calcular el porcentaje de mapa, mientras que pasosFrontera y controladorPuerta
+int pasos, pasosFrontera, controladorPuerta;
+// Sensores del mapa y del mapa auxiliar
+int fil, col, auxFil, auxCol, brujula;
+// Variables usadas para realizar la espiral de la etapa inicial
+int fib_n0, fib_n1, contIni;
+// Porcentajes de mapa actual y anterior
+float perDescPrev, perDesc;
+// caminoASeguir indica que se ha establecido un camino a la casilla especial y que haga lo que ruta
+bool caminoASeguir; 
+// terrenoIdeal indica si mi personaje está sobre una casilla sin zapatillas o bikini respectivamente
+bool terrenoIdeal;
+// Si es verdadera, no realiza una etapa
+bool accionDecidida;
+// Indican si tenemos dichos objetos
+bool zapatillas, bikini;
+// Nos dicen si la accion simple gira a la derecha o izquierda y bien_situado si conocemos todos los datos del sensor relativo a la posición
+bool girar_derecha, bien_situado;
+// Booleanos usados mientras seguimos el muro, tanto para detectarlo y encontrar huecos para pasar por ellos
+bool fronteraEncontrada, posiblePuerta, puerta;
+// Indica la etapa
+Etapa etapa;
+// Indica la anterior acción
+Action ultimaAccion;
+// Almacena los pasos a seguir hasta la casilla especial
+list<unsigned char> ruta;
+// Alamcena el entorno del agente
+vector<unsigned char> entorno;
+// Mapa que graba la visión mientras el agente no esté bien situado
+vector<vector<unsigned char>> mapaAux;
+```
 
-        for (int i = frenteIzq; i <= izquierda; i++) {
-            entorno.push_back('?');
-        }
-    }
 
-    /**
-     * @brief Constructor de copia de la clase ComportamientoJugador.
-     * @param comport Comportamiento que se va a copiar.
-     */
-    ComportamientoJugador(const ComportamientoJugador& comport)
-        : Comportamiento(comport) {}
 
-    /**
-     * @brief Destructor por defecto de ComportamientoJugador.
-     */
-    ~ComportamientoJugador() {}
+### 3. Métodos privados
 
-    /**
-     * @brief think
-     * Método que se ejecuta cada vez que se llama al agente. Se encarga de
-     * actualizar el mapa, el estado del agente y de decidir la acción a
-     * realizar.
-     * @param sensores Valores de los sensores del agente.
-     * @return Action Acción a realizar por el agente.
-     */
-    Action think(Sensores sensores);
+A pesar de tenerlos documentados en *ComportamientoJugador.hpp*, pongo aquí una copia:
 
-    /**
-     * @brief interact
-     * Realiza la interacción con el entorno por parte del agente.
-     * @param accion Acción a realizar.
-     * @param valor
-     * @return int
-     */
-    int interact(Action accion, int valor);
-
-   private:
-    // Variables de estado
-    // Enteros constantes del programa 
-    static const int VISION_DEPTH = 3, UNKNOWN = -1, MAX = 100, MIN_STEPS_LEAVE_WALL = 25;
-    // Constates con la probabilidad de dejarMuro, la proporción de carga deseada y el porcentaje descubierto
-    const float LEAVE_WALL_PROB = 0.05, CHARGE_PROP = 5.0 / 3.0, DISCOVER_PERC = 0.03;
-    // Cuenta los pasos relativos para calcular el porcentaje de mapa, mientras que pasosFrontera y controladorPuerta
-    int pasos, pasosFrontera, controladorPuerta;
-    // Sensores del mapa y del mapa auxiliar
-    int fil, col, auxFil, auxCol, brujula;
-    // Variables usadas para realizar la espiral de la etapa inicial
-    int fib_n0, fib_n1, contIni;
-    // Porcentajes de mapa actual y anterior
-    float perDescPrev, perDesc;
-    // caminoASeguir indica que se ha establecido un camino a la casilla especial y que haga lo que ruta
-    bool caminoASeguir; 
-    // terrenoIdeal indica si mi personaje está sobre una casilla sin zapatillas o bikini respectivamente
-    bool terrenoIdeal;
-    // Si es verdadera, no realiza una etapa
-    bool accionDecidida;
-    // Indican si tenemos dichos objetos
-    bool zapatillas, bikini;
-    // Nos dicen si la accion simple gira a la derecha o izquierda y bien_situado si conocemos todos los datos del sensor relativo a la posición
-    bool girar_derecha, bien_situado;
-    // Booleanos usados mientras seguimos el muro, tanto para detectarlo y encontrar huecos para pasar por ellos
-    bool fronteraEncontrada, posiblePuerta, puerta;
-    // Indica la etapa
-    Etapa etapa;
-    // Indica la anterior acción
-    Action ultimaAccion;
-    // Almacena los pasos a seguir hasta la casilla especial
-    list<unsigned char> ruta;
-    // Alamcena el entorno del agente
-    vector<unsigned char> entorno;
-    // Mapa que graba la visión mientras el agente no esté bien situado
-    vector<vector<unsigned char>> mapaAux;
-
-    // Métodos privados
-    /**
+```c++
+	/**
      * @brief mensaje
      * Función que muestra el mensaje de información
      *  del comportamiento.
@@ -302,6 +227,5 @@ class ComportamientoJugador : public Comportamiento {
      * @return false El agente no muere en la siguiente acción.
      */
     bool voyAMorir(Action accion, Sensores sensores);
-};
+```
 
-#endif

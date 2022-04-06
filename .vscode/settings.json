@@ -3,6 +3,7 @@
     "cmake.configureOnOpen": false,
     "files.associations": {
         "vector": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "*.tcc": "cpp"
     }
 }
